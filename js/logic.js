@@ -19,18 +19,14 @@ function computerPlay() {
 }
 //Computer Rock Paper Scissors choice
 
-let user = prompt("Please choose rock, paper, or scissors to play.");
-let userSelect = user.toLowerCase();
-//User Input
-
 let playerScore = 0;
 let computerScore = 0;
 //Define Scoring
 
 function round () {
+    let user = prompt("Please choose rock, paper, or scissors to play.");
+    let userSelect = user.toLowerCase();
     let computerSelect = computerPlay();
-    console.log(userSelect);
-    console.log(computerSelect);
 
     if (userSelect == "rock") {
         if (computerSelect == "rock") {
@@ -66,7 +62,22 @@ function round () {
     return result;
 }
 
-console.log(round());
-console.log(playerScore);
-console.log(computerScore);
+function game(userSelect) {
+    for (i = 0; i < 5; i++){
+        round();
+        console.log(result);
+    }
+    console.log("Game Over!")
+    console.log("Final Score", "You -", playerScore,"Computer -", computerScore);
+    if (computerScore > playerScore) {
+        console.log ("Computer wins!");
+    } else if (playerScore > computerScore) {
+        console.log ("You win!")
+    } else {
+        console.log ("It's a tie!")
+    }
+    console.log ("Refresh the page to play again!");
+}
+
+game();
 //Computer and User play one round of RPS

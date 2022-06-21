@@ -14,11 +14,6 @@ if (x <= 0.33) {
 }
 //Computer Rock Paper Scissors RNG
 
-
-let user = prompt("Please choose rock, paper, or scissors to play.");
-let userSelect = user.toLowerCase();
-//User input is not case sensitive
-
 function round (userSelect, computerSelect) {
     if (userSelect == "rock") {
         if(computerSelect == "rock") {
@@ -38,19 +33,45 @@ function round (userSelect, computerSelect) {
             }
     }else {
             if(computerSelect == "rock") {
-                roundOutcome = "Rock beats scissors, computer wins!!";
+                roundOutcome = "Rock beats scissors, computer wins!";
             }else if(computerSelect == "paper") {
                 roundOutcome = "Scissors cuts paper, you win!";
             }else {
                 roundOutcome = "Scissors hits scissors, nothing happens!";
             }
         }
-    return roundOutcome;
+        return roundOutcome;
 }
 //Computer and User play one round of RPS
 
-let roundwinner = round(userSelect, computerSelect);
+let userScore = 0;
+let computerScore = 0;
 
-console.log(userSelect);
-console.log(computerSelect);
-console.log(roundwinner);
+function score() {
+    let result = round();
+    if (result == "Paper beats rock, computer wins!", "Scissors cuts paper, computer wins!",
+    "Rock beats scissors, computer wins!" ) {
+        computerScore++;
+    } else if (result == "Rock beats scissors, you win!","Paper beats rock, you win!",
+    "Scissors cuts paper, you win!"){
+        userScore++;
+    } else {
+        null;
+    }
+
+    console.log("Final Score:");
+    console.log(computerScore); //Computer
+    console.log(userScore); //User
+}
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let user = prompt("Please choose rock, paper, or scissors to play.");
+        let userSelect = user.toLowerCase();
+        round(userSelect, computerSelect);
+        console.log(roundOutcome);
+        score(userScore, computerScore);
+    }
+}
+
+game();
